@@ -1,0 +1,100 @@
+.container {
+  position: relative;
+  margin: 100px 72px 0px 72px; //follow design
+  .introduction {
+    position: relative;
+    margin-bottom: 98.51px;
+    
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    .left {
+      float: left;
+      width: 50%;
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 58px;
+    }
+    .right {
+      float: left;
+      width: 50%;
+      .more {
+        margin-top: 30px;
+        .tryForFree {
+          width: 130px;
+          a {
+            text-decoration: none;
+            &:visited {
+              color: #ffffff;
+            }
+          }
+        }
+        .downloadApp {
+        }
+      }
+    }
+
+    @media screen and (max-width: 860px) {
+      .left, .right {
+        float: unset;
+        width: 100%;
+      }
+
+      .left {
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .photos {
+    position: relative;
+    .webview {
+      position: relative;
+      .browserBar {
+        position: absolute;
+        top: 0;
+        background-color: #222222;
+        width: 100%;
+        height: 23px;
+        border-radius: 6px 6px 0px 0px;
+        .leftBrowserBar {
+          position: relative;
+          top: 8px;
+          left: 9.6px;
+          .circleContainer {
+            position: relative;
+            .circle {
+              background-color: #ffffff;
+              border-radius: 50%;
+              height: 8px;
+              width: 8px;
+              float: left;
+              margin: 0 4px;
+            }
+          }
+        }
+      }
+      .content {
+        position: absolute;
+        top: 23px;
+        width: 100%;
+      }
+
+      @media screen and (max-width: 860px) {
+        display: none;
+      }
+    }
+    .mobileview {
+      position: absolute;
+      top: 200px;
+      right: 100px;
+
+      @media screen and (max-width: 860px) {
+        position: static;
+        max-width: 400px;
+        margin: auto;
+      }
+    }
+  }
+}

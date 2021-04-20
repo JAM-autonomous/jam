@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  background: #FFFFFF;
+  box-sizing: border-box;
+  border-radius: 8px;
+  height: 48px;
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 26px;
+
+  .input {
+    display: flex;
+    flex: 1;
+    height: 100%;
+    width: calc(100% - 30px);
+    border: none;
+    padding: unset;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 8px;
+    border: 1px solid #DDDDDD;
+  }
+
+  .append {
+    max-width: 200px;
+    overflow: hidden;
+  }
+}

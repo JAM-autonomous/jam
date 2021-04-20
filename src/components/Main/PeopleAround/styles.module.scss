@@ -1,0 +1,54 @@
+.container {
+  margin-top: 40px;
+
+  @media screen and (max-width: 856px) {
+    margin-top: 40px;
+  }
+
+  .headerBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+
+      > * {
+        margin-bottom: 10px;
+      }
+
+      .right {
+        width: 100%;
+      }
+    }
+
+    .left {
+      flex: 1;
+      font-size: 15px;
+      color: #9c9c9c;
+
+      /*.title {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 26px;
+        color: #9c9c9c;
+      }*/
+    }
+
+    .right {
+      display: flex;
+      flex: 1;
+
+      .searchBox {
+        flex: 1;
+        justify-content: flex-end;
+        display: flex;
+      }
+  
+      .invite {
+        flex-basis: 100px;
+      }
+    }
+  }
+}

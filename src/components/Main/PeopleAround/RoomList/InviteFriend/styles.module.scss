@@ -1,0 +1,51 @@
+@import "../mixin.scss";
+
+.container{
+	@include card;
+
+	* {
+		box-sizing: border-box;
+	}
+
+	.wrapper{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		left: 10px;
+		top: 10px;
+		width: calc(100% - 20px);
+		height: calc(100% - 20px);
+		min-height: unset;
+		border-radius: 20px;
+		cursor: pointer;
+
+		&:hover{
+			background: #f8f8f8;
+
+			.icon{
+				background: #fff;
+			}
+		}
+
+		.icon{
+			width: 64px;
+			height: 64px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			background-color: rgba(17, 116, 220, 0.07);
+
+			img{
+				width: 24px;
+			}
+		}
+
+		span{
+			font-size: 16px;
+			display: block;
+			margin-top: 8px;
+		}
+	}
+}

@@ -1,0 +1,14 @@
+.container{
+	margin: 20px -12px 0;
+	display: flex;
+	box-sizing: border-box;
+	flex-wrap: wrap;
+}
+
+.noRoom{
+	margin: 24px 0 0;
+
+	> span{
+		font-weight: 500 !important;
+	}
+}

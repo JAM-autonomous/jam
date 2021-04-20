@@ -1,0 +1,35 @@
+@import "../mixin.scss";
+
+.container{
+	@include card;
+
+	.wrapper{
+		@include card-wrapper;
+	}
+
+	.icon{
+		@include card-icon;
+		background: rgba(0, 188, 109, 0.07);
+	}
+
+	.label{
+		@include card-label;
+		color: #9c9c9c;
+
+		> span{
+			color: #00BC6D;
+		}
+	}
+
+	&.micOff{
+		.label{
+			> span{
+				color: #FA3434;
+			}
+		}
+
+		.icon{
+			background: rgba(250, 52, 52, 0.07);
+		}
+	}
+}

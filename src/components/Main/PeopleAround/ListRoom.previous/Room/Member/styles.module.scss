@@ -1,0 +1,19 @@
+.container {
+  font-weight: 500; 
+  font-size: 18px;
+  line-height: 26px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #222222;
+  height: 26px;
+
+  .statusContainer {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 11px;
+  }
+
+  .name{
+    text-transform: capitalize;
+  }
+}

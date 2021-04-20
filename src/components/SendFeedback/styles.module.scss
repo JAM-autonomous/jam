@@ -1,0 +1,20 @@
+.container {
+    .contentContainer {
+        height: 172px;
+        display: flex;
+        flex-direction: column;
+
+        .textarea {
+        	font-family: 'Centra No2';
+            height: 130px;
+            resize: none;
+            outline: none;
+            font-size: 14px;
+            padding: 8px 10px;
+
+            &:focus{
+            	border-color: #1174DC;
+            }
+        }
+    }
+}

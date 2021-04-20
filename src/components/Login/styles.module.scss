@@ -1,0 +1,39 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+
+  .form {
+    margin-top: 160px;
+    max-width: 520px;
+    width: 100%;
+
+    .inputContainer {
+      height: 80px;
+    }
+
+    input{
+      font-family: 'Centra No2';
+      font-size: 14px;
+      -webkit-appearance: none;
+      outline: none;
+
+      &:focus{
+        border: 1px solid #1174DC;
+      }
+    }
+  }
+
+  .submitButton{
+    margin-top: 10px;
+    border: 0;
+  }
+
+  .loginTitle{
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    text-align: center;
+  }
+}

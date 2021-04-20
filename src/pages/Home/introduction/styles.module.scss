@@ -1,0 +1,70 @@
+@import "../mixin.scss";
+
+.container{
+	padding: 80px 0 0;
+	text-align: center;
+
+	.wrapper{
+		max-width: 960px;
+		width: 100%;
+		margin: auto;
+	}
+
+	.title{
+		font-weight: 500;
+		font-size: 48px;
+		margin: 0 auto 24px;
+		line-height: 58px;
+	}
+
+	.description{
+		font-size: 16px;
+		line-height: 26px;
+		max-width: 720px;
+		margin: auto;
+	}
+
+	.actions{
+		margin: 32px 0 0;
+
+		a{
+			@include button;
+		}
+
+		> div{
+			font-size: 14px;
+			color: #828282;
+			margin: 10px 0 0;
+		}
+	}
+
+	@media only screen and (max-width: 1100px){
+		.wrapper{
+			width: 90%;
+		}
+
+		.title{
+			max-width: 600px;
+		}
+	}
+
+	@media only screen and (max-width: 480px){
+		@include mobilePadding;
+		padding-top: 64px;
+
+		.wrapper{
+			width: 100%;
+
+			.title{
+				font-size: 32px;
+				line-height: 42px;
+			}
+
+			.actions{
+				a{
+					padding: 12px 20px;
+				}
+			}
+		}
+	}
+}

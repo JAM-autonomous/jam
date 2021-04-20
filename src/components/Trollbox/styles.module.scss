@@ -1,0 +1,148 @@
+.container {
+    width: 100%;
+    border-radius: 20px;
+    background-color: rgba(256, 256, 256, .92);
+    box-sizing: border-box;
+    box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.02);
+    margin-top: 40px;
+    border: 1px solid #f5f5f5;
+
+    * {
+        box-sizing: border-box;
+    }
+
+    .messageWrapper {
+        padding: 20px 0;
+    }
+
+    .messageContainer {
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0px;
+        text-align: left;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+
+        > div > div:first-child {
+            padding: 0 20px;
+        }
+
+        > div > div:nth-child(3) {
+            > div:first-child{
+                background: rgba(0,0,0,.1) !important;
+            }
+        }
+
+        .messageContainerSingle {
+            margin-bottom: 8px;
+
+            &:last-child{
+                margin-bottom: 0;
+            }
+        }
+
+        .senderName {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 24px;
+            letter-spacing: 0px;
+            text-align: left;
+            color: #1174DC;
+            text-transform: capitalize
+        }
+
+        .message {
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 24px;
+            letter-spacing: 0px;
+            text-align: left;
+            color: #222222;
+            word-wrap: break-word;
+        }
+
+    }
+
+    .inputContainer {
+        border-top: 1px solid #F5F5F5;
+        padding: 4px 8px 4px 20px;
+        display: flex;
+        align-items: center;
+
+        .submitMessage {
+            height: 40px;
+            width: 40px;
+            border-radius: 12px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #1174DC12;
+            outline: none;
+            cursor: pointer;
+            border: 0;
+
+            img {
+                width: 15px;
+                height: 15px;
+            }
+        }
+
+        .inputField {
+            display: inline;
+            height: 45px;
+            width: 100%;
+            border: 0;
+            font-family: Centra No2;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 26px;
+            letter-spacing: 0px;
+            text-align: left;
+            border-bottom-left-radius: 20px;
+            outline: none;
+            flex: 1;
+            padding-right: 10px;
+
+            &::-webkit-input-placeholder {
+              color: #9c9c9c;
+            }
+
+            &:-ms-input-placeholder {
+              color: #9c9c9c;
+            }
+
+            &::placeholder {
+              color: #9c9c9c;
+            }
+        }
+
+        .sendButton {}
+    }
+
+    @media screen and (min-width: 1230px){
+        position: fixed;
+        right: 5%;
+        width: 250px;
+        margin-top: 0;
+        top: 206px;
+        display: block;
+    }
+
+    @media screen and (max-height: 630px){
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 40px;
+        width: 100%;
+    }
+
+}
