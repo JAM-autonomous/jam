@@ -1,6 +1,7 @@
 {
-  "name": "Jam-0.2.0",
-  "version": "0.2.0",
+  "name": "Jam",
+  "version": "0.3.0",
+  "license": null,
   "private": false,
   "homepage": ".",
   "main": "main.js",
@@ -49,7 +50,7 @@
     "quick-start-app": "electron-forge start --enable-logging",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish --from-dry-run"
+    "publish": "electron-forge publish"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +73,7 @@
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.54",
     "@electron-forge/maker-deb": "^6.0.0-beta.54",
+    "@electron-forge/maker-pkg": "^6.0.0-beta.54",
     "@electron-forge/maker-rpm": "^6.0.0-beta.54",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.54",
     "@electron-forge/maker-zip": "^6.0.0-beta.54",
@@ -115,8 +117,8 @@
               "owner": "JAM-autonomous",
               "name": "jam"
             },
-            "prerelease": true,
-            "authToken": "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"
+            "prerelease": false,
+            "authToken": "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"
           }
         }
       ]

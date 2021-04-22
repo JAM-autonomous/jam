@@ -1,9 +1,13 @@
 {
-  "name": "Jam-0.1.6",
-  "version": "0.1.6",
-  "private": true,
+  "name": "Jam-0.2.0",
+  "version": "0.2.0",
+  "private": false,
   "homepage": ".",
   "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JAM-autonomous/jam.git"
+  },
   "dependencies": {
     "@electron-forge/publisher-github": "^6.0.0-beta.54",
     "@fingerprintjs/fingerprintjs": "^3.1.0",
@@ -15,6 +19,7 @@
     "autonomous-analytics": "^1.0.12",
     "axios": "^0.21.1",
     "debounce": "^1.2.1",
+    "electron-log": "^4.3.4",
     "electron-updater": "^4.3.8",
     "electron-util": "^0.15.0",
     "email-validator": "^2.0.4",
@@ -31,6 +36,7 @@
     "react-toasts": "^3.0.6",
     "sass": "^1.32.8",
     "socket.io-client": "^3.1.1",
+    "update-electron-app": "^2.0.1",
     "web-vitals": "^1.0.1",
     "webrtc-adapter": "^7.7.1"
   },
@@ -42,7 +48,8 @@
     "start-app": "react-scripts build && electron-forge start --enable-logging",
     "quick-start-app": "electron-forge start --enable-logging",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "publish": "electron-forge publish"
   },
   "eslintConfig": {
     "extends": [
@@ -95,6 +102,22 @@
         {
           "name": "@electron-forge/maker-rpm",
           "config": {}
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "platforms": [
+            "darwin"
+          ],
+          "config": {
+            "repository": {
+              "owner": "JAM-autonomous",
+              "name": "jam"
+            },
+            "prerelease": false,
+            "authToken": "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"
+          }
         }
       ]
     }

@@ -152,13 +152,29 @@ window.addEventListener('DOMContentLoaded', async () => {
     }
 
     const listenForAutoUpdateEventAndShowNotification = () => {
+        ipcRenderer.on("new-update-available", (event, args) => {
+            console.log("New update is available")
+        })
+
         ipcRenderer.on("new-update-downloaded", (event, args) => {
+            console.log("New update is downloaded")
             showUpdateDownloadedPopup()
             ipcRenderer.removeAllListeners("new-update-downloaded")
         })
-    }
 
-    console.log("Start processing...")
+        ipcRenderer.on("auto-update-error", (event, args) => {
+            console.log(args[0])
+        })
+
+        ipcRenderer.on("no-update-available", (event, args) => {
+            console.log("There's no update avaliable")
+        })
+
+        ipcRenderer.on("checking-for-update", (event, args) => {
+            console.log("Checking for update...")
+        })
+    }
+    
     handleGetAvailableScreenSourcesToShareScreen()
     listenForAutoUpdateEventAndShowNotification()
 })
