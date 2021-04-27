@@ -1079,6 +1079,14 @@ electron-util@^0.13.0:
     electron-is-dev "^1.1.0"
     new-github-issue-url "^0.2.1"
 
+electron-util@^0.15.1:
+  version "0.15.1"
+  resolved "https://registry.yarnpkg.com/electron-util/-/electron-util-0.15.1.tgz#caf77b50fbaaa03fba2dc3ffab70c774165c47e7"
+  integrity sha512-Kuz1e+WH/QRUuVcbhY3BiE9UYRFMi4y76YId0AyQU1mBjWb6HcRBCq4gKhILXuLXSD3IWGvYhhPpeJSusWr0zw==
+  dependencies:
+    electron-is-dev "^1.1.0"
+    new-github-issue-url "^0.2.1"
+
 electron@^12.0.4:
   version "12.0.5"
   resolved "https://registry.yarnpkg.com/electron/-/electron-12.0.5.tgz#005cf4375d2ee4563f5e75dc4da4ef871846a8be"

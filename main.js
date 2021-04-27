@@ -1,7 +1,8 @@
 const AutoLaunch = require("auto-launch");
 const path = require("path");
 const url = require("url");
-const { app, BrowserWindow, systemPreferences, ipcMain } = require("electron");
+const { app, BrowserWindow, systemPreferences, ipcMain, autoUpdater } = require("electron");
+const ElectronUtil = require('electron-util');
 
 const {
     hasScreenCapturePermission,
@@ -12,6 +13,8 @@ const {
 
 //global constants and veriables
 let win
+let autoLaunch = null
+let checkForUpdateIntervalHandler = null
 
 function createWindow() {
     if (!win) {
@@ -27,20 +30,22 @@ function createWindow() {
         win.loadFile(path.join(__dirname, "./build/index.html"))
 
         win.once("ready-to-show", () => {
-            require("update-electron-app")()
+            const server = 'https://update.electronjs.org'
+            const feed = `${server}/JAM-autonomous/jam/${process.platform}-${process.arch}/${app.getVersion()}`
+            autoUpdater.setFeedURL({
+                url: feed
+            })
+
+            autoUpdater.checkForUpdates()
+
+            checkForUpdateIntervalHandler = setInterval(() => {
+                autoUpdater.checkForUpdates()
+            }, 30 * 60 * 1000)
         });
     }
 }
 
 app.whenReady().then(() => {
-    let autoLaunch = new AutoLaunch({
-        name: "Jam"
-    })
-
-    autoLaunch.isEnabled().then((isEnabled) => {
-        if (!isEnabled) autoLaunch.enable()
-    })
-
     createWindow()
 
     app.on("activate", () => {
@@ -53,10 +58,8 @@ app.whenReady().then(() => {
 
 app.on("window-all-closed", () => {
     win = null
-
-    if (process.platform !== "darwin") {
+    if(process.platform !== "darwin")
         app.quit()
-    }
 })
 
 app.on("before-quit", console.log);
@@ -76,4 +79,52 @@ ipcMain.on("request-open-system-preferences", async (event, args) => {
         await hasScreenCapturePermission()
         event.sender.send("system-preferences-opened", [])
     }
+})
+
+ipcMain.on("request-get-microphone-permission", (event, args) => {
+    const microphonePermission = systemPreferences.getMediaAccessStatus("microphone")
+    event.sender.send("request-get-microphone-permission-reply", [microphonePermission])
+})
+
+ipcMain.on("request-ask-for-microphone-permission", async (event, args) => {
+    const permission = await systemPreferences.askForMediaAccess("microphone")
+})
+
+ipcMain.on("request-open-security-settings", (event, args) => {
+    ElectronUtil.openSystemPreferences("security", "Privacy")
+})
+
+ipcMain.on("request-get-auto-start-up-permission", (event, args) => {
+    if (process.platform === "darwin") {
+        const isAutoStart = app.getLoginItemSettings().wasOpenedAtLogin
+
+        if (win)
+            win.webContents.send("request-get-auto-start-up-permission-reply", [isAutoStart])
+    } else {
+        autoLaunch = new AutoLaunch({
+            name: "Jam"
+        })
+        autoLaunch.isEnabled().then((isEnabled) => {
+            if (win)
+                win.webContents.send("request-get-auto-start-up-permission-reply", [isEnabled])
+        })
+    }
+})
+
+ipcMain.on("allow-auto-start", (event, args) => {
+    if (process.platform === "darwin") {
+        app.setLoginItemSettings({ openAtLogin: true, args: ['--startup'] })
+    } else {
+        autoLaunch.enable()
+    }
+})
+
+ipcMain.on("request-install-and-restart", (event, args) => {
+    autoUpdater.quitAndInstall()
+})
+
+autoUpdater.on("update-downloaded", () => {
+    clearInterval(checkForUpdateIntervalHandler)
+    if (win)
+        win.webContents.send("update-downloaded", [])
 })
